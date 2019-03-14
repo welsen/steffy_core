@@ -1,3 +1,4 @@
+export * from './client-plugin';
 export * from './injectable';
 export * from './logger';
 export * from './plugin';

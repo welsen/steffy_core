@@ -5,12 +5,14 @@
     "target": "es2017",
     "experimentalDecorators": true,
     "module": "commonjs",
-    "allowJs": true,
     "strict": true,
     "esModuleInterop": true,
     "noImplicitThis": false,
     "noImplicitAny": false,
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "outDir": "./dist",
+    "declaration": true,
+    "sourceMap": true
   },
-  "exclude": ["node_module/**"]
+  "exclude": ["node_module/**", "dist"]
 }

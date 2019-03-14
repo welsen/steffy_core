@@ -2,9 +2,11 @@
   "name": "@steffi/core",
   "version": "1.0.0",
   "description": "Steffi HA Core",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo 'Not implemented yet!'"
+    "test": "echo 'Not implemented yet!'",
+    "prepublish": "npm run build",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "inversify": "^5.0.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^8.0.3"
   },
   "devDependencies": {

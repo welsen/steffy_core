@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 export * from './src/decorators';
 export * from './src/injector';
 export * from './src/interfaces';
