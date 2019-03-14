@@ -1,0 +1,25 @@
+{
+  "name": "@steffi/core",
+  "version": "1.0.0",
+  "description": "Steffi HA Core",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.flnf.hu/ono/steffi-core.git"
+  },
+  "keywords": [
+    "steffi",
+    "home",
+    "assistant",
+    "core"
+  ],
+  "author": "David Onofer <david.onofer@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.flnf.hu"
+  }
+}
