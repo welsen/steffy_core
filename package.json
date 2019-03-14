@@ -4,7 +4,7 @@
   "description": "Steffi HA Core",
   "main": "index.ts",
   "scripts": {
-    "test": "npm test"
+    "test": "echo 'Not implemented yet!'"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,20 @@
   "private": false,
   "publishConfig": {
     "registry": "https://npm.flnf.hu"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "glob": "^7.1.3",
+    "inversify": "^5.0.1",
+    "lodash": "^4.17.11",
+    "moment": "^2.24.0",
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^8.0.3"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^11.11.3",
+    "typescript": "^3.3.3333"
   }
 }
