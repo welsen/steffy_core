@@ -13,7 +13,7 @@ const jsonLoader = async (path: string, type: string, storeIn?: any) => {
   logger.log('STEFFI SYSTEM', `loading json [${type}]`);
   const loaded: string[] = [];
   const base = resolve(mainModuleRoot, path);
-  const gs = new GlobSync(`${base}/**/*.${type}.ts`);
+  const gs = new GlobSync(`${base}/**/*.${type}.json`);
   await asyncForEach(gs.found, async (item: string) => {
     const parsedItem = parse(item); 
     const imported = require(item); // settings.config.json file imported by the compiler
