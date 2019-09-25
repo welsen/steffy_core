@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo 'Not implemented yet!'",
-    "prepublish": "npm run build",
+    "postinstall": "npm run build",
     "build": "tsc"
   },
   "repository": {
@@ -20,7 +20,7 @@
   ],
   "author": "David Onofer <david.onofer@gmail.com>",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "publishConfig": {
     "registry": "https://npm.flnf.hu"
   },
