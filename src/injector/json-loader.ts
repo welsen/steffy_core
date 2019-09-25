@@ -13,9 +13,9 @@ const jsonLoader = async (path: string, type: string, storeIn?: any) => {
   logger.log('STEFFI SYSTEM', `loading json [${type}]`);
   const loaded: string[] = [];
   const base = resolve(mainModuleRoot, path);
-  const gs = new GlobSync(`${base}/**/*.${type}.json`);
+  const gs = new GlobSync(`${base}/**/*${type}.json`);
   await asyncForEach(gs.found, async (item: string) => {
-    const parsedItem = parse(item); 
+    const parsedItem = parse(item);
     const imported = require(item); // settings.config.json file imported by the compiler
     const symbol = upperFirst(camelCase(basename(parsedItem.name.replace(new RegExp(`\\.${type}$`, 'i'), '')))); // settings.config.json --> Settings
     registerInjectionToken(symbol);
@@ -24,7 +24,7 @@ const jsonLoader = async (path: string, type: string, storeIn?: any) => {
     injector.bind<string>(useInjectionToken(`${symbol}File`)).toConstantValue(item);
     loaded.push(symbol);
     if (storeIn) {
-      storeIn[symbol] = imported; 
+      storeIn[symbol] = imported;
     }
   });
   logger.log('STEFFI SYSTEM', `loaded json [${type}]`, loaded);
