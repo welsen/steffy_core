@@ -33,4 +33,4 @@ const moduleLoader = async (path: string, type: string, asSingleton: boolean = f
   logger.log('STEFFI SYSTEM', `loaded modules [${type}]`, loaded);
 }
 
-export { moduleLoader }
+export { moduleLoader };

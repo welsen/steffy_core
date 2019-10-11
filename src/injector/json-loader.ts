@@ -30,4 +30,4 @@ const jsonLoader = async (path: string, type: string, storeIn?: any) => {
   logger.log('STEFFI SYSTEM', `loaded json [${type}]`, loaded);
 }
 
-export { jsonLoader }
+export { jsonLoader };
