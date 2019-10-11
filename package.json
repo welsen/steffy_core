@@ -1,11 +1,11 @@
 {
   "name": "@steffi/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Steffi HA Core",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo 'Not implemented yet!'",
-    "postinstall": "npm run build",
+    "prepare": "npm run build",
     "build": "tsc"
   },
   "repository": {
@@ -20,7 +20,7 @@
   ],
   "author": "David Onofer <david.onofer@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "publishConfig": {
     "registry": "https://npm.flnf.hu"
   },
