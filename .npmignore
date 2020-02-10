@@ -1,2 +1,5 @@
+src/
 node_modules/
 index.ts
+*.json
+*.tgz
