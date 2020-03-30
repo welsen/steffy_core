@@ -1,4 +1,4 @@
-import { IPlugin } from "./plugin";
+import { IPlugin } from './plugin';
 
 export interface IClientPlugin extends IPlugin {
   client: any;

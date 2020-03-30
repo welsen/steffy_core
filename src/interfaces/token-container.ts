@@ -1,4 +1,3 @@
-import { IInjectable } from "./injectable";
+import { IInjectable } from './injectable';
 
-export interface ITokenContainer extends IInjectable {
-}
+export interface ITokenContainer extends IInjectable {}

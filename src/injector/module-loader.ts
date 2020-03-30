@@ -3,11 +3,11 @@ import { GlobSync } from 'glob';
 import { camelCase, upperFirst } from 'lodash';
 import { basename, parse, resolve } from 'path';
 import { IInjectable } from '../interfaces';
-import { Logger } from "../logger";
+import { Logger } from '../logger';
 import { asyncForEach, registerInjectionToken, useInjectionToken } from '../utils';
 import { injector } from './injector';
 
-const mainModuleRoot = (__dirname.split('node_modules')[0].slice(0, -1));
+const mainModuleRoot = __dirname.split('node_modules')[0].slice(0, -1);
 
 const loaderCore = async (item: string, type: string, loaded: string[], asSingleton: boolean, watcherCall: boolean, storeIn?: any) => {
   const parsedItem = parse(item);
@@ -23,7 +23,10 @@ const loaderCore = async (item: string, type: string, loaded: string[], asSingle
   if (!asSingleton) {
     injector.bind<IInjectable>(useInjectionToken(symbol)).to(ctor); // new HttpServerPlugin()
   } else {
-    injector.bind<IInjectable>(useInjectionToken(symbol)).to(ctor).inSingletonScope(); // new HttpServerPlugin() as singleton
+    injector
+      .bind<IInjectable>(useInjectionToken(symbol))
+      .to(ctor)
+      .inSingletonScope(); // new HttpServerPlugin() as singleton
   }
   if (!watcherCall) {
     loaded.push(symbol);
@@ -32,7 +35,6 @@ const loaderCore = async (item: string, type: string, loaded: string[], asSingle
     }
   }
 };
-
 
 const moduleLoader = async (path: string, type: string, asSingleton: boolean = false, storeIn?: any) => {
   const logger = new Logger();
@@ -55,7 +57,6 @@ const moduleLoader = async (path: string, type: string, asSingleton: boolean = f
     await loaderCore(item, type, loaded, asSingleton, false, storeIn);
   });
   logger.log('STEFFI SYSTEM', `loaded modules [${type}]`, loaded);
-}
+};
 
 export { moduleLoader };
-

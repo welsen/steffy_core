@@ -3,11 +3,11 @@ import { GlobSync } from 'glob';
 import { camelCase, upperFirst } from 'lodash';
 import { basename, parse, resolve } from 'path';
 import { IInjectable } from '../interfaces';
-import { Logger } from "../logger";
+import { Logger } from '../logger';
 import { asyncForEach, registerInjectionToken, useInjectionToken } from '../utils';
 import { injector } from './injector';
 
-const mainModuleRoot = (__dirname.split('node_modules')[0].slice(0, -1));
+const mainModuleRoot = __dirname.split('node_modules')[0].slice(0, -1);
 
 const loaderCore = (item: string, type: string, loaded: string[], watcherCall: boolean, storeIn?: any) => {
   const parsedItem = parse(item);
@@ -53,7 +53,6 @@ const jsonLoader = async (path: string, type: string, storeIn?: any) => {
     loaderCore(item, type, loaded, false, storeIn);
   });
   logger.log('STEFFI SYSTEM', `loaded json [${type}]`, loaded);
-}
+};
 
 export { jsonLoader };
-

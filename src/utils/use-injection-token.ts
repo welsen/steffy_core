@@ -1,4 +1,4 @@
-import { SYMBOLS } from "./token-comtainer";
+import { SYMBOLS } from './token-comtainer';
 
 export function useInjectionToken(token: any) {
   if (SYMBOLS[token]) {
