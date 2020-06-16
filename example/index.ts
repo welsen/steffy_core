@@ -1,7 +1,6 @@
-// import { injector } from '../index';
+import { storage } from '@steffy/di';
 import { Application } from './application';
 import { boot } from './boot.sequence';
-import storage from '../src/di/storage';
 
 export async function main() {
   await boot();
