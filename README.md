@@ -1,19 +1,20 @@
-# @steffi/core
+# @steffy/core
 
-Package containing `core` functionalities for Steffi Home Assistant application. Also core can be used for any other application where you want to have **dependency injection**.
+Package containing `core` functionalities for `S`mar`t` `E`nterpise `F`ramework `F`or `Y`ou application.
 
 ## Installation
 
 ```shell
-npm i -S @steffi/core --registry=https://npm.flnf.hu/
+npm i -S @steffy/core @steffy/di
 ```
 
 ## Usage
 
-After installing import the required module from `@steffi/core`.
+After installing import the required module from `@steffy/core` and `@steffy/di`.
 
 ```typescript
-import { } from '@steffi/core';
+import {} from '@steffy/core';
+import {} from '@steffy/di';
 ```
 
 ## Bootstrap application
@@ -21,33 +22,32 @@ import { } from '@steffi/core';
 ### index.ts
 
 ```typescript
-import { injector } from '@steffi/core';
+import { storage } from '@steffy/di';
 import { Application } from './application';
 import { boot } from './boot.sequence';
 
 export async function main() {
   await boot();
-  const app = injector.resolve(Application);
+  const app = storage.get(Application);
   await app.start();
 }
+
 main();
 ```
 
 ### application.ts
 
 ```typescript
-import { inject, injectable } from '@steffi/core';
-import { LoggerPlugin } from './lib/plugins/logger/logger.plugin';
+import { LoggerPlugin } from '@steffy/core';
+import { Inject, Optional, Singleton } from '@steffy/di';
 
-@injectable()
+@Singleton()
 export class Application {
-  constructor(
-    @inject('LoggerPlugin') private logger: LoggerPlugin
-  ) {
-  }
+  constructor(@Inject() private logger: LoggerPlugin, @Optional('SteffyConfig') private config: any) {}
 
   public async start() {
     this.logger.log('my application', 'hello world!');
+    console.log(this.config);
   }
 }
 ```
@@ -55,29 +55,23 @@ export class Application {
 ### boot.sequence.ts
 
 ```typescript
-import { injector, moduleLoader, SYMBOLS } from '@steffi/core';
-import { Application } from './application';
+import { moduleLoader, jsonLoader } from '@steffy/core';
 
 const boot = async () => {
-  // bind plugins
-  await moduleLoader('./src/lib/plugins', 'plugin', true);
-  // bind application singleton
-  injector
-    .bind<Application>(SYMBOLS.Application)
-    .to(Application)
-    .inSingletonScope();
+  await jsonLoader('./configs', 'config');
+  await moduleLoader('./lib/plugins', 'plugin');
 };
 
-export { boot, services };
-
+export { boot };
 ```
 
 ### logger.plugin.ts
 
 ```typescript
-import { injectable, Logger, IPlugin } from '@steffi/core';
+import { IPlugin, Logger } from '@steffy/core';
+import { Singleton } from '@steffy/di';
 
-@injectable()
+@Singleton()
 export class LoggerPlugin implements IPlugin {
   public pluginName = 'Logger';
   private _logger = new Logger();

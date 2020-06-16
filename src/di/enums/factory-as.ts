@@ -1,0 +1,7 @@
+enum FACTORY_AS {
+  SCOPED,
+  SINGLETON,
+  TRANSIENT,
+}
+
+export default FACTORY_AS;
