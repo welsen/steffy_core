@@ -2,8 +2,9 @@
   "compilerOptions": {
     "paths": { "*": ["types/*"] },
     "baseUrl": ".",
-    "target": "es2017",
+    "target": "ESNext",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
