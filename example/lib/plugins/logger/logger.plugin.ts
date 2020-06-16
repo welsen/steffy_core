@@ -1,5 +1,5 @@
+import { Singleton } from '@steffy/di';
 import { IPlugin, Logger } from '../../../../index';
-import Singleton from '../../../../src/di/decorators/singleton';
 
 @Singleton()
 export class LoggerPlugin implements IPlugin {

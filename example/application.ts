@@ -1,6 +1,4 @@
-import Inject from '../src/di/decorators/inject';
-import Optional from '../src/di/decorators/optional';
-import Singleton from '../src/di/decorators/singleton';
+import { Inject, Optional, Singleton } from '@steffy/di';
 import { LoggerPlugin } from './lib/plugins/logger/logger.plugin';
 
 @Singleton()
