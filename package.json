@@ -1,6 +1,6 @@
 {
   "name": "@steffy/core",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "`S`mar`t` `E`nterpise `F`ramework `F`or `Y`ou",
   "main": "dist/index.js",
   "scripts": {
