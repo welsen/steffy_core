@@ -20,7 +20,8 @@
   "license": "MIT",
   "private": false,
   "publishConfig": {
-    "registry": "https://npm.flnf.hu"
+    "registry": "https://npm.flnf.hu",
+    "access": "public"
   },
   "dependencies": {
     "@steffy/di": "^1.0.0",
