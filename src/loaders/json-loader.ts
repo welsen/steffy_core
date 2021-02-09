@@ -2,7 +2,6 @@ import { storage } from '@steffy/di';
 import { GlobSync } from 'glob';
 import { camelCase, upperFirst } from 'lodash';
 import { basename, parse, resolve } from 'path';
-import { Logger } from '../logger';
 import { asyncForEach } from '../utils';
 
 let mainModuleRoot: string = `${__dirname}/../../example`; // for example
@@ -16,16 +15,12 @@ const loaderCore = (item: string, type: string) => {
 };
 
 const jsonLoader = async (path: string, type: string, storeIn?: any) => {
-  const logger = new Logger();
-  logger.log('STEFFY SYSTEM', `loading json [${type}]`);
-  const loaded: string[] = [];
   const base = resolve(mainModuleRoot, path);
   const jsonGlob = `${base}/**/*${type}.json`;
   const gs = new GlobSync(jsonGlob);
   await asyncForEach(gs.found, async (item: string) => {
     loaderCore(item, type);
   });
-  logger.log('STEFFY SYSTEM', `loaded json [${type}]`);
 };
 
 export { jsonLoader };
