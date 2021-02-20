@@ -45,6 +45,7 @@ publish-ci:
     - git config --global user.name "GitLab TAGGER"
     - |
       HAS_API_ORIGIN=$(git remote show | grep api-origin)
+      echo $HAS_API_ORIGIN
       if [[ -z $HAS_API_ORIGIN ]]; then
         git remote add ${API_ORIGIN} https://oauth2:${TAGGER}@git.flnf.hu/ono/${PROJECT}
       fi
