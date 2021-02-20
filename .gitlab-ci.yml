@@ -2,7 +2,7 @@ before_script:
   - npm ci
 
 variables:
-  PROJECT: steffy-db
+  PROJECT: steffy-core
   API_ORIGIN: api-origin
 
 stages:
