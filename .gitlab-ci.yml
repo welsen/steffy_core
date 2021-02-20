@@ -43,11 +43,10 @@ publish-ci:
       sed 's/[",]//g' | tr -d '[[:space:]]')
     - git config --global user.email "noreply@flnf.hu"
     - git config --global user.name "GitLab TAGGER"
-    # - HAS_API_ORIGIN=$(git remote show | grep api-origin)
-    - git remote show
+    - export HAS_API_ORIGIN=$(git remote show | grep api-origin)
+    - echo $HAS_API_ORIGIN
     - |
-      echo $HAS_API_ORIGIN
-      if [ "$API_ORIGIN" -ne "$HAS_API_ORIGIN" ]; then
+      if [[ -z "$HAS_API_ORIGIN" ]]; then
         git remote add ${API_ORIGIN} https://oauth2:${TAGGER}@git.flnf.hu/ono/${PROJECT}
       fi
     - |
@@ -75,7 +74,7 @@ publish-release:
     - git config --global user.email "noreply@flnf.hu"
     - git config --global user.name "GitLab TAGGER"
     - |
-      HAS_API_ORIGIN=$(git remote show | grep api-origin)
+      export HAS_API_ORIGIN=$(git remote show | grep api-origin)
       if [ "$API_ORIGIN" -ne "$HAS_API_ORIGIN" ]; then
         git remote add ${API_ORIGIN} https://oauth2:${TAGGER}@git.flnf.hu/ono/${PROJECT}
       fi
@@ -105,7 +104,7 @@ publish-beta:
     - git config --global user.email "noreply@flnf.hu"
     - git config --global user.name "GitLab TAGGER"
     - |
-      HAS_API_ORIGIN=$(git remote show | grep api-origin)
+      export HAS_API_ORIGIN=$(git remote show | grep api-origin)
       if [ "$API_ORIGIN" -ne "$HAS_API_ORIGIN" ]; then
         git remote add ${API_ORIGIN} https://oauth2:${TAGGER}@git.flnf.hu/ono/${PROJECT}
       fi
