@@ -20,7 +20,7 @@
   "license": "MIT",
   "private": false,
   "publishConfig": {
-    "registry": "https://npm.flnf.hu",
+    "registry": "https://registry.npmjs.org",
     "access": "public"
   },
   "dependencies": {
