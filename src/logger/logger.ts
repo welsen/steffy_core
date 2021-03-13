@@ -1,7 +1,9 @@
+import { Singleton } from '@steffy/di';
 import chalk from 'chalk';
 import moment from 'moment';
 import { ILogger } from '../interfaces/logger';
 
+@Singleton('logger')
 export class Logger implements ILogger {
   private typeColor = {
     debug: chalk.yellowBright,
